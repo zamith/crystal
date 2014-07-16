@@ -15,11 +15,11 @@ all_spec: $(O)/all_spec
 
 $(O)/all_spec: $(SOURCES) $(SPEC_SOURCES)
 	@mkdir -p $(O)
-	./bin/crystal -o $@ spec/all_spec.cr
+	crystal -o $@ spec/all_spec.cr
 
 $(O)/crystal: $(SOURCES)
 	@mkdir -p $(O)
-	./bin/crystal $(if $(release),--release )$(if $(stats),--stats )$(if $(threads),--threads $(threads) )-o $@ src/compiler/crystal.cr
+	crystal $(if $(release),--release )$(if $(stats),--stats )$(if $(threads),--threads $(threads) )-o $@ src/compiler/crystal.cr
 
 clean:
 	rm -rf $(O)

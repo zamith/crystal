@@ -1,10 +1,12 @@
 language: objective-c
 before_install:
   - brew update
+  - brew tap manastech/crystal
 install:
-  - brew install bdw-gc
-  - bin/crystal --setup
+  - brew install crystal --without-llvm33
+  - mkdir deps
+  - curl "http://llvm.org/releases/3.3/clang+llvm-3.3-x86_64-apple-darwin12.tar.gz" | tar xz -C deps
 script:
-  - make spec
+  - PATH=$PATH:deps/clang+llvm-3.3-x86_64-apple-darwin12/bin make spec
 notifications:
   irc: "irc.freenode.net#crystal-lang"
