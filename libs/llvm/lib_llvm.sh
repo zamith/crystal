@@ -18,7 +18,7 @@ $LLVM_CONFIG --ldflags
 
 case `uname -s` in
   Darwin)
-    echo -lc++
+    echo -lc++ -lstdc++
     ;;
   *)
     echo -lstdc++
